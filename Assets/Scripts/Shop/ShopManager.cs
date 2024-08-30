@@ -17,13 +17,15 @@ public class ShopManager : MonoBehaviour
         {
             ShopItemDisplay shopItem = Instantiate(displayPrefab, shopContainer);
             shopItem.PopulateDisplay(item);
-            //shopItem.OnSellItem += HandleItemSelled;
+            shopItem.OnSellItem += HandleItemSelled;
         }
     }
 
     private void HandleItemSelled(Item item)
     {
         if (item.itemState != ItemState.ToBuy) return;
+        
         shopInventory.items.Remove(item);
+        GameManager.Instance.InvokeHandleItemSelled(item);
     }
 }

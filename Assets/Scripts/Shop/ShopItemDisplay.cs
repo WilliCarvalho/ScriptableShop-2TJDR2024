@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,6 +10,8 @@ public class ShopItemDisplay : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName;
     private Button buyButton;
     private Item storedItem;
+
+    public event Action<Item> OnSellItem;
 
     private void Awake()
     {
@@ -27,6 +30,8 @@ public class ShopItemDisplay : MonoBehaviour
 
     public void SellItem()
     {
+        print("Selling item");
+        OnSellItem?.Invoke(storedItem);
         Destroy(this.gameObject);
     }
 }
