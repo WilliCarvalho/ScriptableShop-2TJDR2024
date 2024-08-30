@@ -39,8 +39,6 @@ public class PlayerBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        print("triggering " + other.gameObject.layer);
-        print(InteractableLayer.value);
         if(other.gameObject.layer == 3)
         {
             other.GetComponent<Interactable>().GetInteractText().SetActive(true);

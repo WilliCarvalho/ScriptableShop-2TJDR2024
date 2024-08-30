@@ -6,19 +6,28 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     public InputManager InputManager { get; private set; }
 
-    [SerializeField] private GameObject ShopUI;
+    [SerializeField] private GameObject shopUI;
+    [SerializeField] private GameObject inventoryUI;
+    [SerializeField] private PlayerInventory playerInventory;
+    [SerializeField] private ShopManager shopManager;
 
     private void Awake()
     {
         Instance = this;
         InputManager = new InputManager();
 
-        ShopUI.SetActive(false);
+        shopUI.SetActive(false);
+        inventoryUI.SetActive(false);
+    }
+
+    public void OpenCloseInventory()
+    {
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
     }
 
     public void CheckAndHandleShopUIEnabled()
     {
-        if (ShopUI.activeSelf == true)
+        if (shopUI.activeSelf == true)
         {
             CloseShopUI();
         }
@@ -30,12 +39,17 @@ public class GameManager : MonoBehaviour
 
     public void OpenShopUI()
     {
-        ShopUI.SetActive(true);
+        shopUI.SetActive(true);
     }
 
     public void CloseShopUI()
     {
-        ShopUI.SetActive(false);
+        shopUI.SetActive(false);
+    }
+
+    public void TransferItemToInventory(Item item)
+    {
+        playerInventory.UpdateInventory(item);
     }
 
 }

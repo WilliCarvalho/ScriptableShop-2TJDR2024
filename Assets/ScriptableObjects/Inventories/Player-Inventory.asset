@@ -10,6 +10,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 452dea0d778596140bc16c53d6ef677f, type: 3}
-  m_Name: Shop-Inventory
+  m_Name: Player-Inventory
   m_EditorClassIdentifier: 
   items: []
